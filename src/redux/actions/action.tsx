@@ -11,3 +11,10 @@ export const DLT = (id:number) => {
         payload: id
     }
 }
+
+export const REMOVE = (item:any) => {
+    return {
+        type: "RMV_ONE",
+        payload: item
+    }
+}

@@ -1,4 +1,18 @@
-const Cardsdata = [
+
+ export type Restaurant = {
+    id: number;
+    rname: string;
+    imgdata: string;
+    address: string;
+    delimg: string;
+    somedata: string;
+    price: number;
+    rating: string;
+    arrimg: string;
+    qnty: number;
+  };
+  
+const Cardsdata:Restaurant[] =[
     {
         id: 1,
         rname: "Massala Theoryy",

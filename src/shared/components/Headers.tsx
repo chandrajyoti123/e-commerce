@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -16,6 +16,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { DLT } from '../../redux/actions/action';
 import { Restaurant } from '../../data/CardsData';
 const Headers: React.FC = () => {
+    const [price,setPrice] = useState(0);
     const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
     const open = Boolean(anchorEl);
 
@@ -33,6 +34,18 @@ const Headers: React.FC = () => {
     const dlt = (id: number) => {
         dispatch(DLT(id))
     }
+
+    const total = ()=>{
+        let price = 0;
+        getdata.map((ele:any)=>{
+            price = ele.price * ele.qnty + price
+        });
+        setPrice(price);
+    };
+
+    useEffect(()=>{
+        total();
+    },[total])
 
 
     return (
@@ -109,7 +122,7 @@ const Headers: React.FC = () => {
                                             )
                                         })
                                     }
-                                    <p className='text-center'>Total :₹ 3000</p>
+                                    <p className='text-center'>Total :₹ {price}</p>
                                 </tbody>
                             </Table>
                         </div> :
